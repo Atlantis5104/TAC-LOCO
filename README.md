@@ -6,7 +6,7 @@
 [![Status](https://img.shields.io/badge/Accepted-CoRL%202026-brightgreen.svg)](https://purdue-tracelab.github.io/tacloco/)
 [![License](https://img.shields.io/badge/License-BSD--3--Clause-green.svg)](LICENSE)
 
-An independently implemented tactile-array sensor for official **Isaac Lab v2.3.2**, distributed as a standalone Python package without modifying Isaac Lab.
+A tactile-array simulation module supporting our [TAC-LOCO](https://openreview.net/forum?id=R1fgJZLFnx) project. Independently implemented for official **Isaac Lab v2.3.2**, it installs as a standalone Python package without modifying Isaac Lab.
 
 ![Isaac Lab camera view and tactile-array normal force](docs/media/tactile_array_demo.gif)
 
