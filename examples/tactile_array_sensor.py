@@ -228,7 +228,7 @@ def main() -> None:
             device=args_cli.device,
         )
     )
-    sim.set_camera_view(eye=(1.5, 1.5, 1.5), target=(0.0, 0.0, 0.5))
+    sim.set_camera_view(eye=(0.12, -0.085, 0.59), target=(0.04, -0.003, 0.51))
     scene = InteractiveScene(TactileArraySceneCfg(num_envs=args_cli.num_envs, env_spacing=0.2))
     _print_status("[INFO] Scene created; resetting simulation...")
     try:
