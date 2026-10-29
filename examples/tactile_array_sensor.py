@@ -27,6 +27,15 @@ parser.add_argument("--tactile_rows", type=int, default=12, help="Number of taxe
 parser.add_argument("--tactile_cols", type=int, default=32, help="Number of taxel columns.")
 parser.add_argument("--tactile_spacing", type=float, default=0.002, help="Taxel spacing in metres.")
 parser.add_argument(
+    "--normal_contact_stiffness", type=float, default=1.0, help="Normal penalty gain for estimated tactile forces."
+)
+parser.add_argument(
+    "--tangential_stiffness", type=float, default=0.1, help="Tangential velocity gain for estimated shear forces."
+)
+parser.add_argument(
+    "--friction_coefficient", type=float, default=2.0, help="Coulomb friction limit for estimated shear forces."
+)
+parser.add_argument(
     "--tactile_compliance_stiffness",
     type=float,
     default=None,
@@ -158,9 +167,9 @@ class TactileArraySceneCfg(InteractiveSceneCfg):
         tactile_points_distance=args_cli.tactile_spacing,
         contact_object_prim_path_expr="{ENV_REGEX_NS}/contact_object",
         enable_force_field=True,
-        normal_contact_stiffness=1.0,
-        friction_coefficient=2.0,
-        tangential_stiffness=0.1,
+        normal_contact_stiffness=args_cli.normal_contact_stiffness,
+        friction_coefficient=args_cli.friction_coefficient,
+        tangential_stiffness=args_cli.tangential_stiffness,
         trimesh_vis_tactile_points=args_cli.trimesh_vis_tactile_points,
         visualize_sdf_closest_pts=args_cli.debug_sdf_closest_pts,
     )
