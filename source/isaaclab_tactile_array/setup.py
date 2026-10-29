@@ -17,7 +17,8 @@ setup(
     include_package_data=True,
     package_data={"isaaclab_tactile_array": ["assets/*", "assets/**/*"]},
     install_requires=["rtree", "trimesh"],
-    extras_require={"demo": []},
+    # Tested with OpenCV 4.11 and Isaac Lab v2.3.2's NumPy < 2 environment.
+    extras_require={"demo": ["opencv-python>=4.5,<4.12"]},
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.10",

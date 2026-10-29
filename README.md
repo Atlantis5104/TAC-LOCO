@@ -18,6 +18,8 @@ cd TAC-LOCO
 
 Use your Isaac Lab path if it differs. Git LFS is needed for the included USD/GIF; the demo downloads its contact-object asset on first use.
 
+The demo also opens the original Viridis normal-force heatmap. Add `--debug_tactile_sensor_pts` to show taxels, `--debug_sdf_closest_pts` to show SDF closest points, or `--trimesh_vis_tactile_points` to inspect taxels in a separate trimesh window (close it to continue). Contact stiffness and damping can be overridden with `--tactile_compliance_stiffness` and `--tactile_compliant_damping`.
+
 ## Observations
 
 Import `TactileArraySensorCfg` from `isaaclab_tactile_array` after starting `AppLauncher`. Add it to your scene, then read `scene["tactile_sensor"].data`:

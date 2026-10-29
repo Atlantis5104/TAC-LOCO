@@ -27,6 +27,21 @@ parser.add_argument("--tactile_rows", type=int, default=12, help="Number of taxe
 parser.add_argument("--tactile_cols", type=int, default=32, help="Number of taxel columns.")
 parser.add_argument("--tactile_spacing", type=float, default=0.002, help="Taxel spacing in metres.")
 parser.add_argument(
+    "--tactile_compliance_stiffness",
+    type=float,
+    default=None,
+    help="Override compliant contact stiffness (default: use the USD asset value).",
+)
+parser.add_argument(
+    "--tactile_compliant_damping",
+    type=float,
+    default=None,
+    help="Override compliant contact damping (default: use the USD asset value).",
+)
+parser.add_argument("--debug_sdf_closest_pts", action="store_true", help="Visualize closest SDF points.")
+parser.add_argument("--debug_tactile_sensor_pts", action="store_true", help="Visualize tactile sensor points.")
+parser.add_argument("--trimesh_vis_tactile_points", action="store_true", help="Visualize tactile points using trimesh.")
+parser.add_argument(
     "--contact_object_scale",
     type=float,
     nargs=3,
@@ -47,6 +62,7 @@ app_launcher = AppLauncher(args_cli)
 simulation_app = app_launcher.app
 
 # Isaac Sim and Isaac Lab modules must be imported after AppLauncher starts the app.
+import numpy as np  # noqa: E402
 import torch  # noqa: E402
 from isaaclab_tactile_array import (  # noqa: E402
     TACTILE_ARRAY_FINGER_USD_PATH,
@@ -89,6 +105,8 @@ class TactileArraySceneCfg(InteractiveSceneCfg):
                 disable_gravity=True,
                 max_depenetration_velocity=5.0,
             ),
+            compliant_contact_stiffness=args_cli.tactile_compliance_stiffness,
+            compliant_contact_damping=args_cli.tactile_compliant_damping,
             physics_material_prim_path="elastomer",
             articulation_props=sim_utils.ArticulationRootPropertiesCfg(
                 enabled_self_collisions=False,
@@ -135,6 +153,7 @@ class TactileArraySceneCfg(InteractiveSceneCfg):
 
     tactile_sensor = TactileArraySensorCfg(
         prim_path="{ENV_REGEX_NS}/Robot/elastomer/tactile_sensor",
+        debug_vis=args_cli.debug_tactile_sensor_pts or args_cli.debug_sdf_closest_pts,
         tactile_array_size=(args_cli.tactile_rows, args_cli.tactile_cols),
         tactile_points_distance=args_cli.tactile_spacing,
         contact_object_prim_path_expr="{ENV_REGEX_NS}/contact_object",
@@ -142,7 +161,27 @@ class TactileArraySceneCfg(InteractiveSceneCfg):
         normal_contact_stiffness=1.0,
         friction_coefficient=2.0,
         tangential_stiffness=0.1,
+        trimesh_vis_tactile_points=args_cli.trimesh_vis_tactile_points,
+        visualize_sdf_closest_pts=args_cli.debug_sdf_closest_pts,
     )
+
+
+def visualize_tactile_heatmap(
+    data: TactileArraySensorData, nrows: int, ncols: int, env_idx: int = 0, scale_factor: int = 20
+) -> None:
+    """Show the original pixelated Viridis heatmap with per-frame adaptive scaling."""
+
+    import cv2
+
+    force_grid = np.abs(data.tactile_normal_force[env_idx].detach().cpu().numpy()).reshape(nrows, ncols)
+    max_value = float(force_grid.max())
+    denominator = 0.0008 if max_value < 0.0002 else max_value
+    normalized = np.clip(force_grid / denominator, 0.0, 1.0)
+    pixels = (normalized * 255).astype(np.uint8)
+    pixels = np.repeat(np.repeat(pixels, scale_factor, axis=0), scale_factor, axis=1)
+    image = cv2.applyColorMap(pixels, cv2.COLORMAP_VIRIDIS)
+    cv2.imshow("Tactile Normal Force Heatmap", image)
+    cv2.waitKey(1)
 
 
 def validate_tactile_data(data: TactileArraySensorData, num_envs: int, num_points: int) -> None:
@@ -193,6 +232,8 @@ def run_simulation(sim: sim_utils.SimulationContext, scene: InteractiveScene) ->
         cycle_step += 1
 
         data = scene["tactile_sensor"].data
+        if not args_cli.headless and step % 10 == 0:
+            visualize_tactile_heatmap(data, args_cli.tactile_rows, args_cli.tactile_cols)
         saw_contact = saw_contact or bool(torch.any(data.tactile_normal_force > 0.0).item())
         if step % 25 == 0:
             active = (data.tactile_normal_force > 0.0).sum(dim=1).tolist()
