@@ -1,6 +1,6 @@
 # Isaac Lab Tactile Array
 
-A tactile-array sensor for official **Isaac Lab v2.3.2**, installed as an independent Python package without modifying Isaac Lab.
+An independently implemented tactile-array sensor for official **Isaac Lab v2.3.2**, distributed as a standalone Python package without modifying Isaac Lab.
 
 ![Isaac Lab camera view and tactile-array normal force](docs/media/tactile_array_demo.gif)
 
