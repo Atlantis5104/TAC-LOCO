@@ -10,9 +10,15 @@ A tactile-array simulation module supporting our [TAC-LOCO](https://openreview.n
 
 ![Isaac Lab camera view and tactile-array normal force](docs/media/tactile_array_demo.gif)
 
+*FlexiTac tactile-array simulation and the corresponding 12 × 32 normal-force map.*
+
 [![Tactile sim-to-real comparison](docs/media/tactile_sim2real.png)](docs/media/tactile_sim2real.pdf)
 
+*Effects of contact compliance (left) and sim-to-real tactile response comparison (right).*
+
 [![Simulation workspace](docs/media/sim_workspace.png)](docs/media/sim_workspace.pdf)
+
+*Tactile-informed whole-body loco-manipulation under external forces in simulation.*
 
 ## Quick start
 
