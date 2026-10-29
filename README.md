@@ -1,5 +1,11 @@
 # Isaac Lab Tactile Array
 
+[![arXiv](https://img.shields.io/badge/arXiv-2607.10132-b31b1b.svg)](https://arxiv.org/abs/2607.10132)
+[![Project Page](https://img.shields.io/badge/Project-Page-9cf.svg)](https://purdue-tracelab.github.io/tacloco/)
+[![OpenReview](https://img.shields.io/badge/OpenReview-Paper-8c1b13.svg)](https://openreview.net/forum?id=R1fgJZLFnx)
+[![Status](https://img.shields.io/badge/Submitted-CoRL%202026-orange.svg)](https://purdue-tracelab.github.io/tacloco/)
+[![License](https://img.shields.io/badge/License-BSD--3--Clause-green.svg)](LICENSE)
+
 An independently implemented tactile-array sensor for official **Isaac Lab v2.3.2**, distributed as a standalone Python package without modifying Isaac Lab.
 
 ![Isaac Lab camera view and tactile-array normal force](docs/media/tactile_array_demo.gif)
