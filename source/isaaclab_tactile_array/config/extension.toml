@@ -1,0 +1,15 @@
+[package]
+version = "0.1.0"
+title = "Isaac Lab Tactile Array"
+description = "Standalone SDF-based tactile-array sensor for Isaac Lab 2.3.2."
+category = "robotics"
+keywords = ["isaaclab", "robotics", "sensor", "tactile"]
+
+[dependencies]
+"isaaclab" = {}
+
+[core]
+reloadable = false
+
+[[python.module]]
+name = "isaaclab_tactile_array"
