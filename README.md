@@ -74,3 +74,8 @@ Import `TactileArraySensorCfg` from `isaaclab_tactile_array` after starting `App
 | `num_valid_tactile_points` | `(N,)` | Number of valid taxels per environment |
 
 `N` is the number of environments; `P = rows × columns` (the demo uses `12 × 32 = 384`). Invalid slots remain in the tensors with zero position, depth, and force values. Forces use a penalty model with configurable stiffness and friction; enable them with `enable_force_field=True`, as in the demo.
+
+## References
+
+- [FlexiTac: A Low-Cost, Open-Source, Scalable Tactile Sensing Solution for Robotic Systems](https://arxiv.org/abs/2604.28156)
+- [VT-Refine: Learning Bimanual Assembly with Visuo-Tactile Feedback via Simulation Fine-Tuning](https://arxiv.org/abs/2510.14930)
