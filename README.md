@@ -6,15 +6,24 @@ A tactile-array sensor for official **Isaac Lab v2.3.2**, installed as an indepe
 
 ## Quick start
 
-Prepare an [Isaac Lab v2.3.2 installation](https://github.com/isaac-sim/IsaacLab/tree/v2.3.2/docs/source/setup/installation) and activate its Python environment. With Isaac Lab in a sibling directory named `IsaacLab`:
+1. Install official **Isaac Lab v2.3.2** and Isaac Sim following the [official installation guide](https://isaac-sim.github.io/IsaacLab/v2.3.2/source/setup/installation/index.html). Use an Isaac Lab source checkout at tag `v2.3.2`.
+
+2. Activate that installation's Python environment (for Conda: `conda activate <your_env>`). From the parent directory of your installed `IsaacLab` checkout, install the add-on:
 
 ```bash
 git clone --branch IsaacLab_tac_array --single-branch --depth 1 \
     https://github.com/Atlantis5104/TAC-LOCO.git
 cd TAC-LOCO
 ./install.sh --isaaclab ../IsaacLab
+```
+
+3. Run the demo in the same environment:
+
+```bash
 ../IsaacLab/isaaclab.sh -p examples/tactile_array_sensor.py --debug_tactile_sensor_pts
 ```
+
+The installer uses your official `isaaclab.sh` to install `isaaclab_tactile_array` and its dependencies into that environment, without modifying Isaac Lab source files.
 
 Use your Isaac Lab path if it differs. Git LFS is needed for the included USD/GIF; the demo downloads its contact-object asset on first use.
 
