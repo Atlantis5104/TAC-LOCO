@@ -8,24 +8,25 @@ A tactile-array sensor for official **Isaac Lab v2.3.2**, installed as an indepe
 
 1. Install official **Isaac Lab v2.3.2** and Isaac Sim following the [official installation guide](https://isaac-sim.github.io/IsaacLab/v2.3.2/source/setup/installation/index.html). Use an Isaac Lab source checkout at tag `v2.3.2`.
 
-2. Activate that installation's Python environment (for Conda: `conda activate <your_env>`). From the parent directory of your installed `IsaacLab` checkout, install the add-on:
+2. Activate the same Python environment (Conda example below), then install the add-on. Replace `<your_isaaclab_env>` with your environment name and `<path_to_IsaacLab>` with the absolute path to your installed official Isaac Lab checkout:
 
 ```bash
-git clone --branch IsaacLab_tac_array --single-branch --depth 1 \
-    https://github.com/Atlantis5104/TAC-LOCO.git
+conda activate "<your_isaaclab_env>"
+
+git clone --branch IsaacLab_tac_array https://github.com/Atlantis5104/TAC-LOCO.git
 cd TAC-LOCO
-./install.sh --isaaclab ../IsaacLab
+./install.sh --isaaclab "<path_to_IsaacLab>"
 ```
 
 3. Run the demo in the same environment:
 
 ```bash
-../IsaacLab/isaaclab.sh -p examples/tactile_array_sensor.py --debug_tactile_sensor_pts
+"<path_to_IsaacLab>/isaaclab.sh" -p examples/tactile_array_sensor.py --debug_tactile_sensor_pts
 ```
 
 The installer uses your official `isaaclab.sh` to install `isaaclab_tactile_array` and its dependencies into that environment, without modifying Isaac Lab source files.
 
-Use your Isaac Lab path if it differs. Git LFS is needed for the included USD/GIF; the demo downloads its contact-object asset on first use.
+Git LFS is needed for the included USD/GIF; the demo downloads its contact-object asset on first use.
 
 The demo also opens the original Viridis normal-force heatmap. Use `--debug_tactile_sensor_pts` to show taxels, `--debug_sdf_closest_pts` to show SDF closest points instead, or `--trimesh_vis_tactile_points` to inspect taxels in a separate trimesh window (close it to continue).
 
@@ -52,7 +53,7 @@ In Python, the first three are `TactileArraySensorCfg` fields; compliance is con
 For example:
 
 ```bash
-../IsaacLab/isaaclab.sh -p examples/tactile_array_sensor.py \
+"<path_to_IsaacLab>/isaaclab.sh" -p examples/tactile_array_sensor.py \
     --debug_tactile_sensor_pts --normal_contact_stiffness 2.0 \
     --friction_coefficient 1.0 --tangential_stiffness 0.2 \
     --tactile_compliance_stiffness 30.0 --tactile_compliant_damping 0.1
