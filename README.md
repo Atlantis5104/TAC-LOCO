@@ -3,7 +3,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2607.10132-b31b1b.svg)](https://arxiv.org/abs/2607.10132)
 [![Project Page](https://img.shields.io/badge/Project-Page-9cf.svg)](https://purdue-tracelab.github.io/tacloco/)
 [![OpenReview](https://img.shields.io/badge/OpenReview-Paper-8c1b13.svg)](https://openreview.net/forum?id=R1fgJZLFnx)
-[![Status](https://img.shields.io/badge/Accepted-CoRL%202026-brightgreen.svg)](https://purdue-tracelab.github.io/tacloco/)
+[![Status](https://img.shields.io/badge/Accepted-CoRL%202026-brightgreen.svg)](https://www.corl.org/)
 [![License](https://img.shields.io/badge/License-BSD--3--Clause-green.svg)](LICENSE)
 
 A tactile-array simulation module supporting our [TAC-LOCO](https://openreview.net/forum?id=R1fgJZLFnx) project. Independently implemented for official **Isaac Lab v2.3.2**, it installs as a standalone Python package without modifying Isaac Lab.
