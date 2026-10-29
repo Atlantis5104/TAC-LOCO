@@ -79,3 +79,17 @@ Import `TactileArraySensorCfg` from `isaaclab_tactile_array` after starting `App
 
 - [FlexiTac: A Low-Cost, Open-Source, Scalable Tactile Sensing Solution for Robotic Systems](https://arxiv.org/abs/2604.28156)
 - [VT-Refine: Learning Bimanual Assembly with Visuo-Tactile Feedback via Simulation Fine-Tuning](https://arxiv.org/abs/2510.14930)
+
+## Citations
+
+If you find this work helpful for your research, please consider citing:
+
+```bibtex
+@inproceedings{hu2026unified,
+  title={Unified Whole-Body Control for Quadrupedal Tactile-Informed Loco-Manipulation},
+  author={Muqun Hu and Yuhao Zhou and Kabir Ray Malik and Chi Lin and Won Suk Lee and Yu She and Yan Gu},
+  booktitle={10th Annual Conference on Robot Learning},
+  year={2026},
+  url={https://openreview.net/forum?id=R1fgJZLFnx}
+}
+```
