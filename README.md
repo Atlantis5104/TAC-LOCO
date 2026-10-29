@@ -65,7 +65,9 @@ For example:
     --tactile_compliance_stiffness 30.0 --tactile_compliant_damping 0.1
 ```
 
-## Observations
+## Observations for parallel RL training
+
+The sensor provides batched tactile observations for parallel reinforcement learning (RL) training across `N` environments.
 
 Import `TactileArraySensorCfg` from `isaaclab_tactile_array` after starting `AppLauncher`. Add it to your scene, then read `scene["tactile_sensor"].data`:
 
