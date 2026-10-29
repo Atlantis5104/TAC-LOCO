@@ -12,6 +12,8 @@ A tactile-array simulation module supporting our [TAC-LOCO](https://openreview.n
 
 [![Tactile sim-to-real comparison](docs/media/tactile_sim2real.png)](docs/media/tactile_sim2real.pdf)
 
+[![Simulation workspace](docs/media/sim_workspace.png)](docs/media/sim_workspace.pdf)
+
 ## Quick start
 
 1. Install official **Isaac Lab v2.3.2** and Isaac Sim following the [official installation guide](https://isaac-sim.github.io/IsaacLab/v2.3.2/source/setup/installation/index.html). Use an Isaac Lab source checkout at tag `v2.3.2`.
